@@ -2,6 +2,7 @@ import random
 from datetime import date
 
 
+# 1 def klasy Movie
 class Movie:
     def __init__(self, title, year, genre):
         self.title = title
@@ -19,6 +20,7 @@ class Movie:
         return (self)
 
 
+# 2 def klasy Series
 class Series(Movie):
     def __init__(self, season, episode, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -29,6 +31,7 @@ class Series(Movie):
         return f"{self.title}  {self.season}{self.episode}"
 
 
+# 3 def klasy Library
 class Library:
     def __init__(self):
         self.database = [
@@ -74,6 +77,7 @@ class Library:
                 season="S02", episode="E02"),
         ]
 
+    # 4 def function
     def get_movies(self):
         self.movies_only = [
             item for item in self.database
