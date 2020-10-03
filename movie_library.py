@@ -77,7 +77,7 @@ class Library:
                 season="S02", episode="E02"),
         ]
 
-    # 4 def function
+    # 4 def functions
     def get_movies(self):
         self.movies_only = [
             item for item in self.database
@@ -131,6 +131,7 @@ class Library:
             return 0
 
 
+# 5 run program
 if __name__ == "__main__":
     library = Library()
 
