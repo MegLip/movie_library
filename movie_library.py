@@ -111,22 +111,15 @@ class Library:
         if content_type is None:
             return sorted(
                 self.database, key=lambda movie: movie.views, reverse=True
-                )[0:top_counter]
+                )[:top_counter]
         elif content_type == "Movie":
-            self.movies_only = [
-                item for item in self.database if (
-                    isinstance(item, Movie) and not isinstance(item, Series))
-                ]
             return sorted(
-                self.movies_only, key=lambda movie: movie.views, reverse=True
-                )[0:top_counter]
+                library.get_movies(), key=lambda movie: movie.views,
+                reverse=True)[:top_counter]
         elif content_type == "Series":
-            self.series_only = [
-                item for item in self.database if isinstance(item, Series)
-                ]
             return sorted(
-                self.series_only, key=lambda movie: movie.views, reverse=True
-            )[0:top_counter]
+                library.get_series(), key=lambda series: series.views,
+                reverse=True)[:top_counter]
         else:
             return 0
 
@@ -137,12 +130,12 @@ if __name__ == "__main__":
 
     print("\n***** Biblioteka filmów:")
     for movie in library.get_movies():
-        print(f"{movie.title} {movie.year}")
+        print(movie)
     print('\n')
 
     print("***** Biblioteka seriali:")
     for series in library.get_series():
-        print(f"{series.title} {series.season}{series.episode}")
+        print(series)
     print('\n')
 
     for i in range(10):
